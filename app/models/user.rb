@@ -22,4 +22,13 @@ class User < ApplicationRecord
          :recoverable, 
          :rememberable,
          :validatable
+
+  # ActiveRecord relationships
+  has_many :tweets, inverse_of: :user
+
+  # Validations
+
+  # Class methods
+
+  # Instance methods
 end

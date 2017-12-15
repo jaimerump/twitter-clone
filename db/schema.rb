@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214124028) do
+ActiveRecord::Schema.define(version: 20171214162935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "tweets", force: :cascade do |t|
+    t.string "message"
+    t.string "link"
+    t.bigint "user_id", null: false
+    t.bigint "reply_to_id"
+    t.bigint "original_tweet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["original_tweet_id"], name: "index_tweets_on_original_tweet_id"
+    t.index ["reply_to_id"], name: "index_tweets_on_reply_to_id"
+    t.index ["user_id"], name: "index_tweets_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
