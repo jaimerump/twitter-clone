@@ -30,6 +30,11 @@ class Tweet < ApplicationRecord
   has_many :all_replies, class_name: 'Tweet', 
                          inverse_of: :original_tweet,
                          foreign_key: :original_tweet_id
+  # Favorites
+  has_many :favorites, inverse_of: :tweet
+  has_many :favorited_users, through: :favorites,
+                             source: :user 
+                             # class_name: 'User'
 
   # Validations
   validates :user, presence: true
