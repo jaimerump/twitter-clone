@@ -15,4 +15,9 @@ class Favorite < ApplicationRecord
   # ActiveRecord relations
   belongs_to :tweet, inverse_of: :favorites
   belongs_to :user, inverse_of: :favorites
+
+  # Validations
+  validates :tweet, presence: true
+  validates :user, presence: true
+
 end

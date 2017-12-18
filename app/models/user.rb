@@ -28,6 +28,18 @@ class User < ApplicationRecord
   has_many :favorites, inverse_of: :user
   has_many :favorite_tweets, through: :favorites, 
                              source: :tweet
+  # Followers
+  has_many :followed_follows, class_name: 'Follow',
+                              foreign_key: 'followed_id',
+                              inverse_of: :followed 
+  has_many :followers, through: :followed_follows,
+                       source: :follower 
+  # Following
+  has_many :follower_follows, class_name: 'Follow',
+                              foreign_key: 'follower_id',
+                              inverse_of: :follower 
+  has_many :following, through: :follower_follows,
+                       source: :followed
 
   # Validations
 
@@ -35,13 +47,36 @@ class User < ApplicationRecord
 
   # Instance methods
 
+  # Whether the user has favorited the given tweet
+  def favorited_tweet?(tweet)
+    favorite_tweets.include? tweet
+  end
+
   # Syntactic sugar method for favoriting a tweet, because << and .delete look nothing alike
   def favorite_tweet(tweet)
-    favorite_tweets << tweet
+    # Ternary to prevent duplicates
+    favorited_tweet?(tweet) ? favorite_tweets : favorite_tweets << tweet
   end
 
   # Syntactic sugar method for removing a tweet from favorites, because << and .delete look nothing alike
   def unfavorite_tweet(tweet)
     favorite_tweets.delete(tweet)
   end
+
+  # Whether the user is following the given user
+  def following?(user)
+    following.include? user
+  end
+
+  # Syntactic sugar method for following a user, because << and .delete look nothing alike
+  def follow_user(user)
+    # Ternary to prevent duplicates
+    following?(user) ? following : following << user
+  end
+
+  # Syntactic sugar method for unfollowing a user, because << and .delete look nothing alike
+  def unfollow_user(user)
+    following.delete(user)
+  end
+
 end
