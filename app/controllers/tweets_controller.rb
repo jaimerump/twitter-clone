@@ -40,4 +40,24 @@ class TweetsController < ApplicationController
   def destroy
   end
 
+  # Favorite a tweet
+  def favorite
+
+    @tweet = Tweet.find(params[:id])
+    current_user.favorite_tweet(@tweet)
+
+    redirect_to params[:redirect] || root_path
+
+  end
+
+  # Unfavorite a tweet
+  def unfavorite
+
+    @tweet = Tweet.find(params[:id])
+    current_user.unfavorite_tweet(@tweet)
+
+    redirect_to params[:redirect] || root_path
+
+  end
+
 end
