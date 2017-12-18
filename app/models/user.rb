@@ -42,6 +42,8 @@ class User < ApplicationRecord
                        source: :followed
 
   # Validations
+  validates :name, presence: true 
+  validates :screen_name, presence: true, uniqueness: true
 
   # Class methods
 
