@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resources :tweets, only: [:new, :create, :edit, :update, :destroy]
     post '/tweets/:id/favorite', to: 'tweets#favorite', as: :favorite
     delete '/tweets/:id/favorite', to: 'tweets#unfavorite', as: :unfavorite
+
+    post '/user/:id/follow', to: 'users#follow', as: :follow
+    delete '/user/:id/follow', to: 'users#unfollow', as: :unfollow
   end
 
   resources :tweets, only: [:index]
