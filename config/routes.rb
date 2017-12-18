@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :tweets, only: [:index]
+  resources :users, only: [:show]
 
 end

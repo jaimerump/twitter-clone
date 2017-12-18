@@ -1,3 +1,11 @@
-<nav class="navbar">
-  <a class="navbar-brand" href="/">Twit</a>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="<%= root_path %>">Twit</a>
+
+  <% if user_signed_in? %>
+    <a class="nav-item nav-link" href="<%= user_path(current_user) %>">My Profile</a>
+    <a class="nav-item nav-link" href="<%= destroy_user_session_path %>">Log Out</a>
+  <% else %>
+    <a class="nav-item nav-link" href="<%= new_user_session_path %>">Log In</a>
+    <a class="nav-item nav-link" href="<%= new_user_registration_path %>">Sign Up</a>
+  <% end %>
 </nav>
