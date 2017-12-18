@@ -1,3 +1,7 @@
+<% if user_signed_in? %>
+  <%= render 'form' %>
+<% end %>
+
 <div class="list-group">
   <%= render @tweets %>
 </div>

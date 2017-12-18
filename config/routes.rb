@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
 
   resources :tweets, only: [:index]
-  resources :users, only: [:show]
+
+  # /users/:id conflicts with Devise
+  get '/user/:id', to: 'users#show', as: :user
 
 end
