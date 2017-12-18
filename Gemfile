@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use Devise for auth
 gem 'devise'
+# Bootstrap for styling
+gem 'bootstrap', '~> 4.0.0.beta2.1'
+# Bootstrap requires jQuery
+gem 'jquery-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

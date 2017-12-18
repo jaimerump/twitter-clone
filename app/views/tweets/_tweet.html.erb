@@ -1,0 +1,11 @@
+<div class="list-group-item">
+  <div class="row">
+    <a class="col-lg col-md"><%= tweet.user.name %></a>
+    <span class="col-lg col-md"><%= tweet.user.screen_name %></span>
+    <span class="col-lg col-md"><%= tweet.created_at.strftime('%H:%M %b %-d, %Y') %></span>
+  </div>
+  <div class="row">
+    <div class="col-lg-2 col-md-2"></div>
+    <div class="col-lg col-md"><%= tweet.message %></div>
+  </div>
+</div>
