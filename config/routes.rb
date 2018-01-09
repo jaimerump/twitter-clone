@@ -12,9 +12,11 @@ Rails.application.routes.draw do
     delete '/user/:id/follow', to: 'users#unfollow', as: :unfollow
   end
 
+  # Separate because it doesn't require authentication
   resources :tweets, only: [:index]
 
   # /users/:id conflicts with Devise
   get '/user/:id', to: 'users#show', as: :user
+  get '/user/:id/mentions', to: 'users#mentions', as: :mentions
 
 end

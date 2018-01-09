@@ -12,7 +12,7 @@ class TweetsController < ApplicationController
   # Save new tweet
   def create
     # Injection risk, don't do this in production!
-    @tweet = Tweet.create(message: params[:tweet][:message], user: current_user)
+    @tweet = TweetCreator.run(params[:tweet], current_user)
 
     if @tweet.errors.any?
       respond_to do |format|

@@ -40,6 +40,10 @@ class User < ApplicationRecord
                               inverse_of: :follower 
   has_many :following, through: :follower_follows,
                        source: :followed
+  # Mentions
+  has_and_belongs_to_many :mentions, class_name: 'Tweet',
+                                     join_table: 'mentions',
+                                     inverse_of: :mentioned_users
 
   # Validations
   validates :name, presence: true 

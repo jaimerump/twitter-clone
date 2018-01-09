@@ -34,7 +34,9 @@ class Tweet < ApplicationRecord
   has_many :favorites, inverse_of: :tweet
   has_many :favorited_users, through: :favorites,
                              source: :user 
-                             # class_name: 'User'
+  has_and_belongs_to_many :mentioned_users, class_name: 'User',
+                                     join_table: 'mentions',
+                                     inverse_of: :mentions
 
   # Validations
   validates :user, presence: true
