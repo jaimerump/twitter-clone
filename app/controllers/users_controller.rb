@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # Show a user's profile
   def show
-    @tweets = Tweet.where(user: @user).order(created_at: :desc).includes(:user).all
+    @tweets = Tweet.where(user: @user).all.feed
   end
 
   # Follow a user
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   # Show user's mentions
   def mentions
-    @tweets = @user.mentions.order(created_at: :desc).includes(:user).all
+    @tweets = @user.mentions.all.feed
   end
 
   private

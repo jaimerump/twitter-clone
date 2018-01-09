@@ -38,6 +38,9 @@ class Tweet < ApplicationRecord
                                      join_table: 'mentions',
                                      inverse_of: :mentions
 
+  # Scopes
+  scope :feed, -> { order(created_at: :desc).includes(:user) }
+
   # Validations
   validates :user, presence: true
 

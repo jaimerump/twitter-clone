@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
   
   # Show a feed of tweets
   def index
-    @tweets = Tweet.includes(:user).all.order(created_at: :desc)
+    @tweets = Tweet.all.feed
   end
 
   # New tweet form

@@ -51,6 +51,9 @@ GEM
       popper_js (>= 1.12.3, < 2)
       sass (>= 3.5.2)
     builder (3.2.3)
+    bullet (5.7.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11.0)
     byebug (9.1.0)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -193,6 +196,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.0.2)
       execjs (>= 0.3.0, < 3)
+    uniform_notifier (1.11.0)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -210,6 +214,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bootstrap (~> 4.0.0.beta2.1)
+  bullet
   byebug
   coffee-rails (~> 4.2)
   database_cleaner
